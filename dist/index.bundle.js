@@ -26,7 +26,17 @@ eval("/* module decorator */ module = __webpack_require__.nmd(module);\nvar __WE
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ \"./node_modules/lodash/lodash.js\");\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);\n\n\nfunction component() {\n  const element = document.createElement('div');\n\n  element.innerHTML = lodash__WEBPACK_IMPORTED_MODULE_0___default().join(['Hello', 'To-Do-List'], ' ');\n\n  return element;\n}\n\ndocument.body.appendChild(component());\n\n//# sourceURL=webpack://to-dolist/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ \"./node_modules/lodash/lodash.js\");\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles.css */ \"./src/styles.css\");\n/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_styles_css__WEBPACK_IMPORTED_MODULE_1__);\n\n\n\nconst listItems = [\n  {\n    description: 'Go to the gym',\n    completed: false,\n    index: 0,\n  },\n  {\n    description: 'Prepare breakfast',\n    completed: false,\n    index: 1,\n  },\n  {\n    description: 'Wash dishes',\n    completed: false,\n    index: 2,\n  },\n];\n\nconst createList = (list) => {\n  const li = document.createElement('li');\n\n  li.innerHTML = `\n  <li class=\"tasks-itm\">\n    <label class=\"tasks-lb\">\n      <input type=\"checkbox\" value=\"${list.completed}\">\n      <p class=\"des-task\">${list.description}</p>\n    </label>\n    <i class=\"fas fa-ellipsis-v\"></i>\n  </li>`;\n\n  return li;\n};\n\nconst displayLists = (taskList) => {\n  const taskUl = document.querySelector('.task-placeholder');\n\n  taskList.forEach((element) => {\n    const li = createList(element);\n    taskUl.appendChild(li);\n  });\n};\n\nwindow.onload = displayLists(listItems);\n\n//# sourceURL=webpack://to-dolist/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/styles.css":
+/*!************************!*\
+  !*** ./src/styles.css ***!
+  \************************/
+/***/ (() => {
+
+eval("\n\n//# sourceURL=webpack://to-dolist/./src/styles.css?");
 
 /***/ })
 
