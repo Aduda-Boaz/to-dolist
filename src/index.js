@@ -1,6 +1,4 @@
-/* eslint-disable-next-line no-unused-vars */
-
-import _, { create } from 'lodash';
+import _ from 'lodash';
 import './styles.css';
 
 const listItems = [
