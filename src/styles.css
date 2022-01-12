@@ -1,0 +1,14 @@
+li {
+  height: 10vh;
+}
+
+.input-task {
+  border-top-color: black;
+  border-top-width: 1px;
+  border-top-style: solid;
+}
+
+.tasks-itm {
+  list-style-type: none;
+  display: flex;
+}

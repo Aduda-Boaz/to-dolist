@@ -26,7 +26,7 @@ var listItems = [{
 
 var createList = function createList(list) {
   var li = document.createElement('li');
-  li.innerHTML = "\n  <li class=\"tasks-itm\">\n    <label class=\"tasks-lb\">\n      <input type=\"checkbox\" value=\"".concat(list.completed, "\">\n      <p class=\"des-task\">").concat(list.description, "</p>\n    </label>\n    <i class=\"fas fa-ellipsis-v\"></i>\n  </li>");
+  li.innerHTML = "\n  <li class=\"tasks-itm\">\n    <label class=\"tasks-lb d-flex\">\n      <input type=\"checkbox\" value=\"".concat(list.completed, "\">\n      <p class=\"des-task\">").concat(list.description, "</p>\n    </label>\n    <i class=\"fas fa-ellipsis-v\"></i>\n  </li>");
   return li;
 };
 

@@ -24,7 +24,7 @@ const createList = (list) => {
 
   li.innerHTML = `
   <li class="tasks-itm">
-    <label class="tasks-lb">
+    <label class="tasks-lb d-flex">
       <input type="checkbox" value="${list.completed}">
       <p class="des-task">${list.description}</p>
     </label>
