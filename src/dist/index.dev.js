@@ -6,6 +6,7 @@ require("./styles.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+/* eslint-disable no-unused-vars */
 var listItems = [{
   description: 'Go to the gym',
   completed: false,
