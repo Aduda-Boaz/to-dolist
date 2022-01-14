@@ -3,6 +3,8 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.deleteList = deleteList;
+exports.removeSelected = removeSelected;
 exports.addNew = exports.setEvents = exports.displayLists = exports.createList = void 0;
 
 var _events = require("./events.js");
@@ -23,7 +25,7 @@ var createList = function createList(list) {
   var checkList = list.completed === true ? 'checked' : '';
   var checkClass = list.completed === true ? 'marked' : '';
   divContainer.classList.add('div-container');
-  li.innerHTML = "\n    <label>\n      <input class=\"checkbox\" ".concat(checkList, " type=\"checkbox\">\n      <input class=\"des-task ").concat(checkClass, "\" type=\"text\" value=\"").concat(list.description, ">\n      <input type=\"hidden\" class=\"\" value=\"").concat(list.index, "\">\n    </label>\n    <i class=\"fas fa-ellipsis-v\"></i>\n    <i class=\"far fa-trash-alt\"></i>");
+  li.innerHTML = "\n    <label>\n      <input class=\"checkbox\" ".concat(checkList, " type=\"checkbox\">\n      <input class=\"list-decrip ").concat(checkClass, "\" type=\"text\" value=\"").concat(list.description, ">\n      <input type=\"hidden\" class=\"\" value=\"").concat(list.index, "\">\n    </label>\n    <i class=\"fas fa-ellipsis-v\"></i>\n    <i class=\"far fa-trash-alt\"></i>");
   divContainer.appendChild(li);
   return divContainer;
 };
@@ -68,3 +70,18 @@ var addNew = function addNew() {
 };
 
 exports.addNew = addNew;
+
+function deleteList(e) {
+  var listUl = document.querySelectorAll('.list-placeholder');
+  var remDiv = e.target.parentNode.parentNode;
+  listUl.removeChild(remDiv);
+}
+
+function removeSelected() {
+  var listUl = document.querySelector('.listplaceholder');
+  var remList = document.querySelectorAll('.marked');
+  remList.forEach(function (element) {
+    var remDiv = element.parentElement.parentElement;
+    listUl.removeChild(remDiv);
+  });
+}

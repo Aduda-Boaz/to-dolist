@@ -18,7 +18,7 @@ export const createList = (list) => {
   li.innerHTML = `
     <label>
       <input class="checkbox" ${checkList} type="checkbox">
-      <input class="des-task ${checkClass}" type="text" value="${list.description}>
+      <input class="list-decrip ${checkClass}" type="text" value="${list.description}>
       <input type="hidden" class="" value="${list.index}">
     </label>
     <i class="fas fa-ellipsis-v"></i>
@@ -60,4 +60,21 @@ export const addNew = () => {
   listUl.innerHTML = '';
   displayLists(listArr);
   setEvents();
+}
+
+export function deleteList(e) {
+  const listUl = document.querySelectorAll('.list-placeholder');
+  const remDiv = e.target.parentNode.parentNode;
+
+  listUl.removeChild(remDiv);
+}
+
+export function removeSelected() {
+  const listUl = document.querySelector('.listplaceholder');
+  const remList = document.querySelectorAll('.marked');
+
+  remList.forEach((element) => {
+    const remDiv = element.parentElement.parentElement;
+    listUl.removeChild(remDiv);
+  });
 }
