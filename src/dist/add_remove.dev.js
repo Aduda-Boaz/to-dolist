@@ -3,8 +3,8 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.deleteList = deleteList;
 exports.removeSelected = removeSelected;
+exports.removeAll = removeAll;
 exports.addNew = exports.setEvents = exports.displayLists = exports.createList = void 0;
 
 var _events = require("./events.js");
@@ -43,10 +43,9 @@ var displayLists = function displayLists(taskList) {
 exports.displayLists = displayLists;
 
 var setEvents = function setEvents() {
-  (0, _events.dragEvent)();
+  (0, _events.addNewEvent)();
   (0, _events.editEvent)();
   (0, _events.completeEvent)();
-  (0, _events.addNewEvent)();
   (0, _events.deleteListEvent)();
   (0, _events.deleteAllEvent)();
 };
@@ -71,17 +70,20 @@ var addNew = function addNew() {
 
 exports.addNew = addNew;
 
-function deleteList(e) {
-  var listUl = document.querySelectorAll('.list-placeholder');
-  var remDiv = e.target.parentNode.parentNode;
-  listUl.removeChild(remDiv);
-}
-
 function removeSelected() {
-  var listUl = document.querySelector('.listplaceholder');
+  var listUl = document.querySelector('.list-placeholder');
   var remList = document.querySelectorAll('.marked');
   remList.forEach(function (element) {
     var remDiv = element.parentElement.parentElement;
+    listUl.removeChild(remDiv);
+  });
+}
+
+function removeAll() {
+  var listUl = document.querySelectorAll('.list-placeholder');
+  var remList = document.querySelectorAll('.marked');
+  remList.forEach(function (element) {
+    var remDiv = element.parentElement.parentElement.parentElement;
     listUl.removeChild(remDiv);
   });
 }

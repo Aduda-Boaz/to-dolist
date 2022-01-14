@@ -39,10 +39,9 @@ export const displayLists = (taskList) => {
 };
 
 export const setEvents = () => {
-  dragEvent();
+  addNewEvent();
   editEvent();
   completeEvent();
-  addNewEvent();
   deleteListEvent();
   deleteAllEvent();
 }
@@ -62,19 +61,23 @@ export const addNew = () => {
   setEvents();
 }
 
-export function deleteList(e) {
-  const listUl = document.querySelectorAll('.list-placeholder');
-  const remDiv = e.target.parentNode.parentNode;
-
-  listUl.removeChild(remDiv);
-}
 
 export function removeSelected() {
-  const listUl = document.querySelector('.listplaceholder');
+  const listUl = document.querySelector('.list-placeholder');
   const remList = document.querySelectorAll('.marked');
 
   remList.forEach((element) => {
     const remDiv = element.parentElement.parentElement;
+    listUl.removeChild(remDiv);
+  });
+}
+
+export function removeAll() {
+  const listUl = document.querySelectorAll('.list-placeholder');
+  const remList = document.querySelectorAll('.marked');
+
+  remList.forEach((element) => {
+    const remDiv = element.parentElement.parentElement.parentElement;
     listUl.removeChild(remDiv);
   });
 }

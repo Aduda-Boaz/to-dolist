@@ -1,6 +1,5 @@
 /*eslint-disable no-unused-vars */
 import _, { create } from 'lodash';
-import setStorage from './store.js';
 import { displayLists, setEvents } from './add_remove';
 import './styles.css';
 

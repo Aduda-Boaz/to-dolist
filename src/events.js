@@ -1,4 +1,5 @@
-import { addNew } from "./add_remove";
+import { addNew, removeSelected, removeAll } from "./add_remove";
+import './styles.css';
 
 function setStorage(listItems) {
   localStorage.setItem('lists', JSON.stringify(listItems));
@@ -22,6 +23,53 @@ export const addNewEvent = () => {
   const input = document.querySelector('#list-input');
 
   input.addEventListener('enter', (e) => {
+    if (e.key === 'Enter' && input.value !== '' && e.target.matches('#list-input')) {
+      addNew();
+      updList();
+    }
+  });
+};
 
-  })
-}
+export const editEvent = () => {
+  const inputList = document.querySelectorAll('.list-description');
+  const inputArr = Array.from(inputList);
+
+  inputArr.forEach((input) => {
+    input.addEventListener('input', () => {
+      updList();
+    });
+  });
+};
+
+export const completeEvent = () => {
+  const checkboxes = document.querySelectorAll('.checkbox');
+  const checkboxArr = Array.from(checkboxes);
+
+  checkboxArr.forEach((inputBox) => {
+    inputBox.addEventListener('change', (e) => {
+      checkCompleted(e);
+      updList();
+    });
+  });
+};
+
+export const deleteListEvent = () => {
+  const lists = document.querySelectorAll('.list-placeholder');
+  const listsArr = Array.from(lists);
+
+  listsArr.forEach((list) => {
+    list.addEventListener('click', (e) => {
+      removeSelected(e);
+      updList();
+    });
+  });
+};
+
+export const deleteAllEvent = () => {
+  const removeAllList = document.querySelector('#clear-list');
+
+  removeAllList.addEventListener('click', () => {
+    removeAll();
+    updList();
+  });
+};
