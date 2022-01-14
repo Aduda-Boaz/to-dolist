@@ -19,7 +19,7 @@ export const createList = (list) => {
     <label>
       <input class="checkbox" ${checkList} type="checkbox">
       <input class="des-task ${checkClass}" type="text" value="${list.description}>
-      <input type="hidden" class="" value="${task.index}">
+      <input type="hidden" class="" value="${list.index}">
     </label>
     <i class="fas fa-ellipsis-v"></i>
     <i class="far fa-trash-alt"></i>`;
@@ -30,11 +30,11 @@ export const createList = (list) => {
 };
 
 export const displayLists = (taskList) => {
-  const taskUl = document.querySelector('.task-placeholder');
+  const listUl = document.querySelector('.task-placeholder');
 
   taskList.forEach((element) => {
     const div = createList(element);
-    taskUl.appendChild(div);
+    listUl.appendChild(div);
   });
 };
 
@@ -47,4 +47,17 @@ export const setEvents = () => {
   deleteAllEvent();
 }
 
+export const addNew = () => {
+  const input = document.querySelector('#list-input');
+  const listUl = document.querySelector('.list-placeholder');
+  let listArr = [];
 
+  if (localStorage.getItem('lists')) {
+    listArr = JSON.parse(localStorage.getItem('lists'));
+  }
+  listArr.push(new List(input.value, false, listArr.length + 1));
+  input.value = '';
+  listUl.innerHTML = '';
+  displayLists(listArr);
+  setEvents();
+}

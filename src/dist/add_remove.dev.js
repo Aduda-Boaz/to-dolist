@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.setEvents = exports.displayLists = exports.createList = void 0;
+exports.addNew = exports.setEvents = exports.displayLists = exports.createList = void 0;
 
 var _events = require("./events.js");
 
@@ -23,7 +23,7 @@ var createList = function createList(list) {
   var checkList = list.completed === true ? 'checked' : '';
   var checkClass = list.completed === true ? 'marked' : '';
   divContainer.classList.add('div-container');
-  li.innerHTML = "\n    <label>\n      <input class=\"checkbox\" ".concat(checkList, " type=\"checkbox\">\n      <input class=\"des-task ").concat(checkClass, "\" type=\"text\" value=\"").concat(list.description, ">\n      <input type=\"hidden\" class=\"\" value=\"").concat(task.index, "\">\n    </label>\n    <i class=\"fas fa-ellipsis-v\"></i>\n    <i class=\"far fa-trash-alt\"></i>");
+  li.innerHTML = "\n    <label>\n      <input class=\"checkbox\" ".concat(checkList, " type=\"checkbox\">\n      <input class=\"des-task ").concat(checkClass, "\" type=\"text\" value=\"").concat(list.description, ">\n      <input type=\"hidden\" class=\"\" value=\"").concat(list.index, "\">\n    </label>\n    <i class=\"fas fa-ellipsis-v\"></i>\n    <i class=\"far fa-trash-alt\"></i>");
   divContainer.appendChild(li);
   return divContainer;
 };
@@ -31,10 +31,10 @@ var createList = function createList(list) {
 exports.createList = createList;
 
 var displayLists = function displayLists(taskList) {
-  var taskUl = document.querySelector('.task-placeholder');
+  var listUl = document.querySelector('.task-placeholder');
   taskList.forEach(function (element) {
     var div = createList(element);
-    taskUl.appendChild(div);
+    listUl.appendChild(div);
   });
 };
 
@@ -50,3 +50,21 @@ var setEvents = function setEvents() {
 };
 
 exports.setEvents = setEvents;
+
+var addNew = function addNew() {
+  var input = document.querySelector('#list-input');
+  var listUl = document.querySelector('.list-placeholder');
+  var listArr = [];
+
+  if (localStorage.getItem('lists')) {
+    listArr = JSON.parse(localStorage.getItem('lists'));
+  }
+
+  listArr.push(new List(input.value, false, listArr.length + 1));
+  input.value = '';
+  listUl.innerHTML = '';
+  displayLists(listArr);
+  setEvents();
+};
+
+exports.addNew = addNew;

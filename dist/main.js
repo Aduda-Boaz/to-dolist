@@ -129,6 +129,27 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 
 /***/ }),
 
+/***/ "./src/add_remove.js":
+/*!***************************!*\
+  !*** ./src/add_remove.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"createList\": () => (/* binding */ createList),\n/* harmony export */   \"displayLists\": () => (/* binding */ displayLists),\n/* harmony export */   \"setEvents\": () => (/* binding */ setEvents)\n/* harmony export */ });\n/* harmony import */ var _events_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./events.js */ \"./src/events.js\");\n/* harmony import */ var _events_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_events_js__WEBPACK_IMPORTED_MODULE_0__);\n\n\nclass List {\n  constructor(description, completed, index) {\n    this.description = description;\n    this.completed = completed;\n    this.index = index;\n  }\n}\n\nconst createList = (list) => {\n  const divContainer = document.createElement('div');\n  const li = document.createElement('li');\n  const checkList = (list.completed === true) ? 'checked' : '';\n  const checkClass = (list.completed === true) ? 'marked' : '';\n  divContainer.classList.add('div-container');\n\n  li.innerHTML = `\n    <label>\n      <input class=\"checkbox\" ${checkList} type=\"checkbox\">\n      <input class=\"des-task ${checkClass}\" type=\"text\" value=\"${list.description}>\n      <input type=\"hidden\" class=\"\" value=\"${task.index}\">\n    </label>\n    <i class=\"fas fa-ellipsis-v\"></i>\n    <i class=\"far fa-trash-alt\"></i>`;\n  \n  divContainer.appendChild(li);\n\n  return divContainer;\n};\n\nconst displayLists = (taskList) => {\n  const taskUl = document.querySelector('.task-placeholder');\n\n  taskList.forEach((element) => {\n    const div = createList(element);\n    taskUl.appendChild(div);\n  });\n};\n\nconst setEvents = () => {\n  (0,_events_js__WEBPACK_IMPORTED_MODULE_0__.dragEvent)();\n  (0,_events_js__WEBPACK_IMPORTED_MODULE_0__.editEvent)();\n  (0,_events_js__WEBPACK_IMPORTED_MODULE_0__.completeEvent)();\n  (0,_events_js__WEBPACK_IMPORTED_MODULE_0__.addNewEvent)();\n  (0,_events_js__WEBPACK_IMPORTED_MODULE_0__.deleteListEvent)();\n  (0,_events_js__WEBPACK_IMPORTED_MODULE_0__.deleteAllEvent)();\n}\n\n\n\n\n//# sourceURL=webpack://to-dolist/./src/add_remove.js?");
+
+/***/ }),
+
+/***/ "./src/events.js":
+/*!***********************!*\
+  !*** ./src/events.js ***!
+  \***********************/
+/***/ (() => {
+
+eval("\n\n//# sourceURL=webpack://to-dolist/./src/events.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -136,7 +157,18 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ \"./node_modules/lodash/lodash.js\");\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles.css */ \"./src/styles.css\");\n\n\n\nconst listItems = [\n  {\n    description: 'Go to the gym',\n    completed: false,\n    index: 0,\n  },\n  {\n    description: 'Prepare breakfast',\n    completed: false,\n    index: 1,\n  },\n  {\n    description: 'Wash dishes',\n    completed: false,\n    index: 2,\n  },\n];\n\nconst createList = (list) => {\n  const li = document.createElement('li');\n\n  li.innerHTML = `\n  <li class=\"tasks-itm\">\n    <label class=\"tasks-lb d-flex justify-content-between align-content-center\">\n      <input type=\"checkbox\" value=\"${list.completed}\">\n      <p class=\"des-task\">${list.description}</p>\n    </label><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-list-check\" viewBox=\"0 0 16 16\">\n      <path fill-rule=\"evenodd\" d=\"M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3.854 2.146a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 3.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 7.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z\"/>\n    </svg>\n  </li>`;\n\n  return li;\n};\n\nconst displayLists = (taskList) => {\n  const taskUl = document.querySelector('.task-placeholder');\n\n  taskList.forEach((element) => {\n    const li = createList(element);\n    taskUl.appendChild(li);\n  });\n};\n\nwindow.onload = displayLists(listItems);\n\n//# sourceURL=webpack://to-dolist/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ \"./node_modules/lodash/lodash.js\");\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _store_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./store.js */ \"./src/store.js\");\n/* harmony import */ var _add_remove__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./add_remove */ \"./src/add_remove.js\");\n/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./styles.css */ \"./src/styles.css\");\n/*eslint-disable no-unused-vars */\n\n\n\n\n\nlet listItems = [];\n\nif (localStorage.getItem('lists')) {\n  listItems = JSON.parse(localStorage.getItem('lists'));\n\n  (0,_add_remove__WEBPACK_IMPORTED_MODULE_2__.displayLists)(listItems);\n  (0,_add_remove__WEBPACK_IMPORTED_MODULE_2__.setEvents)();\n} else {\n  (0,_store_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(listItems);\n  (0,_add_remove__WEBPACK_IMPORTED_MODULE_2__.displayLists)(listItems);\n  (0,_add_remove__WEBPACK_IMPORTED_MODULE_2__.setEvents)();\n}\n\n\n//# sourceURL=webpack://to-dolist/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/store.js":
+/*!**********************!*\
+  !*** ./src/store.js ***!
+  \**********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ setStorage)\n/* harmony export */ });\nfunction setStorage(listItems) {\n  localStorage.setItem('lists', JSON.stringify(listItems));\n}\n\n\n//# sourceURL=webpack://to-dolist/./src/store.js?");
 
 /***/ })
 
