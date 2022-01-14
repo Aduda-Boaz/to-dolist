@@ -1,5 +1,10 @@
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.addNewEvent = void 0;
+
 var _add_remove = require("./add_remove");
 
 function setStorage(listItems) {
@@ -21,3 +26,10 @@ function updList() {
 
   setStorage(nwOb);
 }
+
+var addNewEvent = function addNewEvent() {
+  var input = document.querySelector('#list-input');
+  input.addEventListener('enter', function (e) {});
+};
+
+exports.addNewEvent = addNewEvent;

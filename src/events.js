@@ -18,3 +18,10 @@ function updList() {
   setStorage(nwOb);
 }
 
+export const addNewEvent = () => {
+  const input = document.querySelector('#list-input');
+
+  input.addEventListener('enter', (e) => {
+
+  })
+}
