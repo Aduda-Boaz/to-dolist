@@ -1,6 +1,6 @@
 export default class Storage {
   constructor() {
-    this.list = JSON.parse(localStorage.getItem('list'));
+    this.list = JSON.parse(localStorage.getItem('lists'));
   }
 
   getList() {

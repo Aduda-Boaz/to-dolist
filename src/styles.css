@@ -2,31 +2,49 @@ li {
   height: 10vh;
 }
 
-ul {
-  justify-content: space-between;
-  align-items: center;
-  padding: 0;
-  margin: 0;
-  text-align: right;
-  width: 10em;
+svg {
+  height: 1em;
+  width: 1em;
 }
 
-input {
-  position: relative;
-}
-
-.task-placeholder {
-  align-items: center;
-  justify-content: space-between;
-}
-
-.input-task {
+.task-element {
   border-top-color: black;
   border-top-width: 1px;
   border-top-style: solid;
 }
 
-.tasks-itm {
-  list-style-type: none;
-  display: flex;
+#new-task {
+  width: 90%;
+}
+
+#add {
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.ordered {
+  background-color: #eee;
+  order: 150;
+}
+
+.remove-btn {
+  color: #333;
+}
+
+.remove-btn:hover {
+  color: #222;
+}
+
+.overlined {
+  text-decoration: line-through;
+}
+
+.dropdown-toggle::after {
+  content: none;
+}
+
+p {
+  height: 2em;
+  padding: 0;
+  margin: 0;
 }

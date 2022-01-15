@@ -14,7 +14,7 @@ const setClass = (item) => {
 
 export default function setList(description, completed, index) {
   const element = document.createElement('li');
-  const list = document.getElementById('list-items');
+  const list = document.getElementById('new-list');
   element.innerHTML = `
     <input type="checkbox" ${setChecked(completed)} id="${index}-check" value="${index}>
     <p id="${index}-description" class="${setClass(completed)}">${description}</p>
@@ -25,7 +25,7 @@ export default function setList(description, completed, index) {
   </svg></button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton-${index}">
         <li><a class="dropdown-item dropdown-editor" id="edit-${index}" href="#">Edit</a></li>
-        <li><a class="dropdown-item dropdown-remover" id="remove-${index}" href="#">Remove</a></li>
+        <li><a class="dropdown-item dropdown-remover" id="remove-btn-${index}" href="#">Remove</a></li>
       </ul>
   </div> `;
   element.classList.add('task-element', 'd-flex', 'align-content-center', 'justify-content-between', 'py-3')
