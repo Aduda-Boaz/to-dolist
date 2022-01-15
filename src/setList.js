@@ -7,7 +7,7 @@ const setChecked = (item) => {
 
 const setClass = (item) => {
   if (item) {
-    return 'overlined'
+    return 'overlined';
   }
   return '';
 };
@@ -28,7 +28,7 @@ export default function setList(description, completed, index) {
         <li><a class="dropdown-item dropdown-remover" id="remove-btn-${index}" href="#">Remove</a></li>
       </ul>
   </div> `;
-  element.classList.add('task-element', 'd-flex', 'align-content-center', 'justify-content-between', 'py-3')
+  element.classList.add('task-element', 'd-flex', 'align-content-center', 'justify-content-between', 'py-3');
   element.setAttribute('id', index);
   list.appendChild(element);
 }

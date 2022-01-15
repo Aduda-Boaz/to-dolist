@@ -1,8 +1,8 @@
 /* eslint no-restricted-globals: "off", curly: "error" */
 import './styles.css';
-import List from './list';
-import setList from './setList';
-import Storage from './store';
+import List from './list.js';
+import setList from './setList.js';
+import Storage from './store.js';
 
 const addBtn = document.getElementById('add');
 const removeAll = document.getElementById('clear');
@@ -32,7 +32,6 @@ const deleteAll = (id) => {
 
 const editEvent = (id) => {
   const index = id.slice(5).toString();
-  console.log(index);
   const textField = document.getElementById(`${index}-description`);
   textField.innerHTML = '';
   const editField = document.createElement('input');
@@ -66,19 +65,19 @@ function loadPredef(arr) {
   localStorage.setItem('list', JSON.stringify(lists));
   const completeCheckBox = document.querySelectorAll("input[type='checkbox']");
   completeCheckBox.forEach((box) => {
-    box.addEventListener('click', (e) => {
+    box.addEventListener('click', () => {
       updateTask(box.checked, box.value);
     });
   });
   const completeRemovers = document.querySelectorAll('a.dropdown-remover');
   completeRemovers.forEach((link) => {
-    link.addEventListener('click', (e) => {
+    link.addEventListener('click', () => {
       deleteAll(link.id);
     });
   });
   const completeEditors = document.querySelectorAll('a.dropdown-editor');
   completeEditors.forEach((link) => {
-    link.addEventListener('click', (e) => {
+    link.addEventListener('click', () => {
       editEvent(link.id);
     });
   });
@@ -86,9 +85,9 @@ function loadPredef(arr) {
 
 loadPredef(lists);
 
-inputField.addEventListener('keypress', (item) => {
-  if (item.key === 'enter') {
-    const newIndex = increaseCounter();
+inputField.addEventListener('keypress', (e) => {
+  if (e.key === 'enter') {
+    const newIndex = counterIncreament();
     const description = document.getElementById('new-task').value;
 
     if (description === '' || description === ' ' || description == null) { return; }
@@ -107,7 +106,7 @@ inputField.addEventListener('keypress', (item) => {
 addBtn.addEventListener('click', (e) => {
   e.preventDefault();
 
-  const newIndex = increaseCounter();
+  const newIndex = counterIncreament();
   const description = document.getElementById('new-task').value;
 
   if (description === '' || description === ' ' || description == null) { return; }
